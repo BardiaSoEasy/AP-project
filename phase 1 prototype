@@ -1,0 +1,192 @@
+from datetime import datetime
+
+class User:
+    def __init__(self, user_id , username, email, password, user_type):
+        self.user_id = user_id
+        self.username =username
+        self.email = email
+        self.password = password
+        self.user_type = user_type
+        
+    def register(self):         
+    
+        def username_validation(self):
+                message: str = "invalid UserName"
+                if self.username.count(".") > 1:
+                    raise Exception(message)
+                elif self.username.count("_") > 1:
+                    raise Exception(message)
+                elif self.username.find(".") >= 0 and self.username.find("_") >= 0:
+                    raise Exception(message)
+                else:
+                    items = self.username.replace(".", "@").replace("_", "@").split("@")
+                    if len(items) != 2:
+                        raise Exception(message)
+                    elif len(items[0]) == 0 or len(items[1]) == 0:
+                        raise Exception(message)
+                    elif not items[0].isalpha() or not items[1].isalpha():
+                        raise Exception(message)
+                        
+        def email_validation(self, email):
+           count1=email.count('@')
+           count2=email.count('.')
+           if count1!=1:
+               raise Exception("invalid Email")
+           if count2<1 or count2>2:
+               raise Exception("invalid Email")
+                 
+           #parts
+           parts =re.split('[@]', email)
+           username0=parts[0]
+           partsp=re.split('[.]', parts[1])
+           if len(partsp)!=2:
+               raise Exception("invalid Email")            
+           domain=partsp[0]
+           tld=partsp[1]
+           #tld
+           if tld.isalpha()==False:
+               raise Exception("invalid Email")
+           if len(tld)>3 or len(tld)<2:
+               raise Exception("invalid Email")
+           #domain
+           if domain.isalnum()==False:
+               raise Exception("invalid Email")
+           #username
+           m=0
+           point=0
+           for j in range(len(username0)):
+               if username0[j].isalnum()==False and username0[j]!='.' and username0[j]!='_':
+                   m+=1
+               if username0[j]=='.':
+                   point+=1
+           if m>0:
+               raise Exception("invalid Email")
+           return email
+                            
+        def password_validation(self):
+                message: str = "invalid Password"
+                if len(self.password) < 8:
+                    raise Exception(message)
+                elif self.password.find("#") == -1 and self.password.find("$") == -1 and self.password.find("@") == -1 and self.password.find("!") == -1:
+                    raise Exception(message)
+                elif not self.password.replace("#", "").replace("$", "").replace("@", "").replace("!", "").isalnum():
+                    raise Exception(message)
+                else:
+                    upperCounter = 0
+                    lowerCounter = 0
+                    digitCounter = 0
+                    for i in self.password:
+                        if i >= "A" and i <= "Z":
+                            upperCounter = upperCounter + 1
+                        elif i >= "a" and i <= "z":
+                            lowerCounter = lowerCounter + 1
+                        elif i >= "0" and i <= "9":
+                            digitCounter = digitCounter + 1
+                    if upperCounter == 0 or lowerCounter == 0 or digitCounter == 0:
+                        raise Exception(message)
+            
+        def validate_user_id(user_id):
+             message: str = "invalid user_id"
+             if len(user_id) != 10 and user_id.isdigit()==False:
+                 raise Exception(message)
+                    
+        def validate_user_type(user_type):
+                message: str = "invalid user_type "
+                valid_types = ['Doctor' ,'Patient','Secretary']
+                if user_type not in valid_types:
+                    raise Exception(message)
+
+    def login(self,user_id , username, email, password, user_type):
+            if username == self.username and password == self.password and user_id == self.user_id and email == self.email and user_type == self.user_type :
+                self.logged_in = True
+                print("Logged in successfully")
+            else:
+                print("Invalid username or password")
+    
+    def update_profile(self , new_email , new_password):
+           if self.logged_in:
+                self.email = new_email
+                self.password = new_password
+                print("Profile updated successfully")
+           else:
+                print("You need to log in first")
+    
+    def view_appointments(self):
+            if self.logged_in:
+                if self.user_type == "doctor" or self.user_type == "secretary":
+                    print("Appointments: ")
+                else:
+                    print("You do not have permission to view appointments")
+            else:
+                print("You need to log in first")
+            
+class Clinic:
+    def __init__(self, clinic_id, name, address, contact_info, services, availability):
+        self.clinic_id = clinic_id
+        self.name = name
+        self.address = address
+        self.contact_info = contact_info
+        self.services = services
+        self.availability = availability
+
+    def add_clinic(self, clinic_id, name, address, contact_info, services, availability):
+        self.clinic_id = clinic_id
+        self.name = name
+        self.address = address
+        self.contact_info = contact_info
+        self.services = services
+        self.availability = availability
+
+    def update_clinic_info(self, name=None, address=None, contact_info=None, services=None):
+        if name:
+            self.name = name
+        if address:
+            self.address = address
+        if contact_info:
+            self.contact_info = contact_info
+        if services:
+            self.services = services
+
+    def set_availability(self, availability):
+        self.availability = availability
+
+    def view_appointment(self):
+        pass
+
+class Appointment:
+    def __init__(self, AppointmentID, ClinicID, UserID, DateTime, Status):
+        self.AppointmentID = AppointmentID
+        self.ClinicID = ClinicID
+        self.UserID = UserID
+        self.DateTime = DateTime
+        self.Status = Status
+
+    def register_appointment(self, new_datetime):
+        current_time = datetime.now()
+        if new_datetime < current_time:
+            print("Cannot register an appointment in the past.")
+            return
+        self.DateTime = new_datetime
+        self.Status = "Scheduled"
+        print("Appointment registered successfully.")
+
+    def cancel_appointment(self):
+        self.Status = "Cancelled"
+        print("Appointment cancelled successfully.")
+
+    def reschedule_appointment(self, new_datetime):
+        self.register_appointment(new_datetime)
+        print("Appointment rescheduled successfully.")
+
+class Notification:
+    def __init__(self, notification_id, user_id, message):
+        self.notification_id = notification_id
+        self.user_id = user_id
+        self.message = message
+        self.timestamp = datetime.datetime.now()
+
+    def send_notification(self):
+        print(f"Notification sent to user {self.user_id} with message: {self.message}")
+
+
+
