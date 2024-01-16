@@ -1,0 +1,106 @@
+Login Menu
+----------
+1) SignIn
+2) SignUp
+3) Exit
+
+
+SignIn Menu
+-----------
+1) Password
+2) One-Time Password
+3) Return
+
+
+Password Form
+-------------
+User Id :
+Password:
+Valid -> User  -> User Main Menu
+         Staff -> Staff Main Menu
+Invalid -> SignIn Menu
+
+
+One-Time Password Form
+----------------------
+User Id:
+One-Time Password :
+Valid -> User  -> User Main Menu
+         Staff -> Staff Main Menu
+Invalid -> SignIn Menu
+
+
+SignUp Form
+-----------
+[User Id=SystemGenerated]
+Name :
+Password :
+E-Mail :
+[UserType="U"]
+Submit -> Login Menu
+
+
+User Main Menu
+--------------
+1) View Current Appointments
+2) View Appointments History
+3) Reserve An Appointment
+4) Update Profile
+
+
+Current Appointments Form
+-------------------------
+Display A Grid For Appointments (DateTime >= CurrentDate) By API
+
+
+Appointments History
+--------------------
+Display A Grid For Appointments (DateTime < CurrentDate)
+
+
+Reserve An Apointment Form
+--------------------------
+Clinic Name :
+Search Where Availability = True
+Found -> Reserve Clinic Form
+Not Found -> Display Message -> User Main Menu
+
+
+Reserve Clinic Form
+-------------------
+[Appointment Id=GenerateBySystem]
+[ClinicId=Found Clinic]
+[UserId=CurrentUserId]
+[Status=Booking]
+DateTime :
+Submit -> User Main Menu
+Decrease Appointment Counter By API
+
+
+Staff Main Menu
+---------------
+1) View Current Appointments
+2) Cancel An Appointment
+3) Increase Appointment Counter By API
+4) Update Profile
+
+
+Cancelling Appointment Form
+---------------------------
+Clinic Id :
+DateTime :
+[Status="Cancel"]
+Submit -> Staff Main Menu
+
+
+Admin Main Menu
+---------------
+1) Create A Clinic
+2) Update A Clinic
+3) Delete A Clinic
+4) View Clinics
+4) Delete A User
+------------------
+5) Update Profile
+
+

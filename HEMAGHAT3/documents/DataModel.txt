@@ -1,0 +1,46 @@
+User
+------
+*	UserId
+	Name
+	EMail
+	Password
+	UserType
+	SignUp()
+	SignIn()
+	UpdateProfile()
+	ViewAppointments()
+
+Clinic
+-------
+*	ClinicId
+	Name
+	Address
+	Contact
+	Services[]
+	Availability
+	ViewAppointments()
+	SetAvailability()
+	UpdateClinicInfo()
+	AddClinic()
+
+Appointment
+-----------------
+*	AppointmentId
+	ClinicId
+	UserId
+	DateTime
+	Status= 'booked', 'cancelled', or 'rescheduled'
+	BookAppointment()
+	CancelAppointment()
+	RescheduleAppointment
+
+Notification
+----------------
+*	NotificationId
+	UserId
+	Message
+	DateTime
+	SendNotification()
+
+
+	
