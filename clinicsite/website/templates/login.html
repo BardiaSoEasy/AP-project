@@ -1,0 +1,12 @@
+<h2>ورود</h2>
+<form method="post">
+  {% csrf_token %}
+  <label for="username">نام کاربری:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="password">رمز عبور:</label><br>
+  <input type="password" id="password" name="password"><br>
+  <input type="submit" value="ورود">
+</form>
+{% if error %}
+  <p>{{ error }}</p>
+{% endif %}

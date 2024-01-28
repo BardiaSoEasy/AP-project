@@ -1,9 +1,8 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from .validators import username_validation , email_validation , password_validation
+
 from datetime import datetime
-from .database import *
-from  .system import * 
+
 
 
 
@@ -16,11 +15,16 @@ class User(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
-    usertype = models.CharField(max_length=255)
+    usertype = models.CharField(max_length=1, choices=[('p', 'Patient'), ('s', 'Staff')])
+    last_login = models.DateTimeField(null=True)
 
-    def register(self, username, password, name, email, usertype):
-        user = User(username=username, name=name, email=email, password=make_password(password), usertype=usertype)
-        user.save()
+    @classmethod
+    def register(cls, username, password, name, email, usertype):
+        if cls.objects.filter(username=username).exists():
+            return None  # Or raise an exception
+        if usertype not in ['p', 's']:
+            raise ValueError('Invalid user type')
+        user = cls.objects.create(username=username, name=name, email=email, password=make_password(password), usertype=usertype)
         return user
 
     @classmethod
@@ -32,7 +36,7 @@ class User(models.Model):
         except cls.DoesNotExist:
             pass
         return None
-
+    
     @classmethod
     def getUser(cls, username):
         try:
@@ -207,13 +211,13 @@ class Payment(models.Model):
     amount = models.IntegerField()
 
     @classmethod
-    def addPayment(cls, appointmentid, serviceid):
-        datetime = timezone.now()
-        # You'll need to implement selectServicePrice separately
-        amount = selectServicePrice(serviceid=serviceid)
-        payment = cls(appointmentid=appointmentid, datetime=datetime, amount=amount)
-        payment.save()
-        return payment
+    # def addPayment(cls, appointmentid, serviceid):
+        # datetime = timezone.now()
+        
+        # #amount = selectServicePrice(serviceid=serviceid)
+        # payment = cls(appointmentid=appointmentid, datetime=datetime, #amount=amount)
+        # payment.save()
+        # return payment
 
     def updatePayment(self, appointmentid, datetime, amount):
         self.appointmentid = appointmentid

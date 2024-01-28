@@ -1,0 +1,18 @@
+<h2>ثبت نام</h2>
+<form method="post">
+  {% csrf_token %}
+  <label for="username">نام کاربری:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="password">رمز عبور:</label><br>
+  <input type="password" id="password" name="password"><br>
+  <label for="name">نام:</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="email">ایمیل:</label><br>
+  <input type="email" id="email" name="email"><br>
+  <label for="usertype">نوع کاربر:</label><br>
+  <select id="usertype" name="usertype">
+    <option value="p">بیمار</option>
+    <option value="s">کارکنان</option>
+  </select><br>
+  <input type="submit" value="ثبت نام">
+</form>
