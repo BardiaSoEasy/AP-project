@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Appointment History List</title>
+    <style>
+        #header {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #body {
+            background-color: #cccccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Appointment History List Form</h2>
+    </div>
+    <div id="body">
+        <h3>Clinic Reservation System</h3>
+        <hr>
+        <p>Appointment History List...</p>
+        <table align="center" width="90%" border="1px solid black">
+            <tr>
+                <th>
+                    <p>Appointment Id
+                </th>
+                <th>
+                    <p>Clinic Id
+                </th>
+                <th>
+                    <p>Service Id
+                </th>
+                <th>
+                    <p>User Name
+                </th>
+                <th>
+                    <p>Date
+                </th>
+                <th>
+                    <p>Time
+                </th>
+                <th>
+                    <p>Status
+                </th>
+            </tr>
+            {% for appointment in appointmentList %}
+            <tr align="center">
+                <td>{{ appointment.AppointmentId }}</td>
+                <td>
+                    <p>{{ appointment.ClinicId }}</p>
+                </td>
+                <td>
+                    <p>{{ appointment.ServiceId }}</p>
+                </td>
+                <td>
+                    <p>{{ appointment.UserName }}</p>
+                </td>
+                <td>
+                    <p>{{ appointment.Date }}</p>
+                </td>
+                <td>
+                    <p>{{ appointment.Time }}</p>
+                </td>
+                <td>
+                    <p>{{ appointment.Status }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button onclick="history.back();">Back</button>
+    </div>
+    <div id="footer">
+        <p>Sharif University Of Technology</p>
+    </div>
+</body>
+
+</html>

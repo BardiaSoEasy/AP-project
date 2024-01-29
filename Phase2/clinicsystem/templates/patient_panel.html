@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Patient Panel</title>
+    <style>
+        #header {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #body {
+            background-color: #cccccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Patient Panel Form</h2>
+    </div>
+    <div id="body">
+        <h3>Welcom to Clinic Reservation System</h3>
+        <hr>
+        <p>Select a menu item...</p>
+        <h4>Appointment</h4>
+        <ul>
+            <li><a href="/clinicsystem/appointment_active_list/">Active List</a></li>
+            <li><a href="/clinicsystem/appointment_history_list/">History List</a></li>
+            <li><a href="/clinicsystem/appointment_reservation/">Appointment Reservatoin</a></li>
+            <li><a href="/clinicsystem/update_profile/">Update Profile</a></li>
+        </ul>
+        <br>
+        <button onclick="document.location='/'">Logout</button>
+    </div>
+    <div id="footer">
+        <p>Sharif University Of Technology</p>
+    </div>
+</body>
+
+</html>
