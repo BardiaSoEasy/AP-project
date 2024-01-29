@@ -1,0 +1,7 @@
+<h2>خوش آمدید، {{ request.user.username }}!</h2>
+<p>این داشبورد شماست.</p>
+{% if request.user.usertype == 'p' %}
+  <p>شما یک بیمار هستید.</p>
+{% else %}
+  <p>شما یک کارکنان هستید.</p>
+{% endif %}
