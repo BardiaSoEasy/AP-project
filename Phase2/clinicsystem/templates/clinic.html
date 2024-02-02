@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Clinic</title>
     <style>
         #header {
             background-color: gray;
@@ -24,7 +24,7 @@
 
 <body>
     <div id="header">
-        <h2>Login Form</h2>
+        <h2>Clinic Form</h2>
     </div>
     {% if messages %}
     {% for message in messages %}
@@ -37,14 +37,13 @@
         <h3>Clinic Reservation System</h3>
         <hr>
         <form action="" method="post">
-            <p>Select a user for login...</p>
+            <p>Clinic...</p>
             {% csrf_token %}
             {{ form.as_p }}
-            <br>
-            <input type="submit" value="Submit">
+            <button onclick="document.location='/clinicsystem/clinic/{{ clinicId }}/'">Update</button>
         </form>
+        <button onclick="history.back();">Back</button>
         <br>
-        <button onclick="document.location='/'">Back</button>
     </div>
     <div id="footer">
         <p>Sharif University Of Technology</p>

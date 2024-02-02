@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Appointment History List</title>
+    <title>Notification List</title>
     <style>
         #header {
             background-color: gray;
@@ -24,7 +24,7 @@
 
 <body>
     <div id="header">
-        <h2>Appointment History List Form</h2>
+        <h2>Notification List Form</h2>
     </div>
     {% if messages %}
     {% for message in messages %}
@@ -36,51 +36,35 @@
     <div id="body">
         <h3>Clinic Reservation System</h3>
         <hr>
-        <p>Appointment History List...</p>
+        <p>Notification List...</p>
         <table align="center" width="90%" border="1px solid black">
             <tr>
                 <th>
-                    <p>Appointment Id
-                </th>
-                <th>
-                    <p>Clinic Id
-                </th>
-                <th>
-                    <p>Service Id
+                    <p>Notification Id
                 </th>
                 <th>
                     <p>User Name
                 </th>
                 <th>
-                    <p>Date
+                    <p>Date/Time
                 </th>
                 <th>
-                    <p>Time
-                </th>
-                <th>
-                    <p>Status
+                    <p>Message
                 </th>
             </tr>
-            {% for appointment in appointmentList %}
+            {% for notification in notificationList %}
             <tr align="center">
-                <td>{{ appointment.AppointmentId }}</td>
                 <td>
-                    <p>{{ appointment.ClinicId }}</p>
+                    <p>{{ notification.NotificationId }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.ServiceId }}</p>
+                    <p>{{ notification.UserName }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.UserName }}</p>
+                    <p>{{ notification.DateTime }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.Date }}</p>
-                </td>
-                <td>
-                    <p>{{ appointment.Time }}</p>
-                </td>
-                <td>
-                    <p>{{ appointment.Status }}</p>
+                    <p>{{ notification.Message }}</p>
                 </td>
             </tr>
             {% endfor %}

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Appointment Active List</title>
+    <title>Clinic List</title>
     <style>
         #header {
             background-color: gray;
@@ -24,56 +24,53 @@
 
 <body>
     <div id="header">
-        <h2>Appointment Active List Form</h2>
+        <h2>Clinic List Form</h2>
     </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
     <div id="body">
         <h3>Clinic Reservation System</h3>
         <hr>
-        <p>Appointment Active List...</p>
+        <p>Clinic List...</p>
         <table align="center" width="90%" border="1px solid black">
             <tr>
-                <th>
-                    <p>Appointment Id
-                </th>
                 <th>
                     <p>Clinic Id
                 </th>
                 <th>
-                    <p>Service Id
+                    <p>Name
                 </th>
                 <th>
-                    <p>User Name
+                    <p>Address
                 </th>
                 <th>
-                    <p>Date
+                    <p>Contact
                 </th>
                 <th>
-                    <p>Time
-                </th>
-                <th>
-                    <p>Status
+                    <p>Availability
                 </th>
             </tr>
-            {% for appointment in appointmentList %}
+            {% for clinic in clinicList %}
             <tr align="center">
-                <td><a href="#">{{ appointment.AppointmentId }}</a></td>
                 <td>
-                    <p>{{ appointment.ClinicId }}</p>
+                    <p><a href="/clinicsystem/clinic/{{ clinic.ClinicId }}/">{{ clinic.ClinicId }}</a></p>
                 </td>
                 <td>
-                    <p>{{ appointment.ServiceId }}</p>
+                    <p>{{ clinic.Name }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.UserName }}</p>
+                    <p>{{ clinic.Address }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.Date }}</p>
+                    <p>{{ clinic.Contact }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.Time }}</p>
-                </td>
-                <td>
-                    <p>{{ appointment.Status }}</p>
+                    <p>{{ clinic.Availability }}</p>
                 </td>
             </tr>
             {% endfor %}

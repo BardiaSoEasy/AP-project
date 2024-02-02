@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Appointment History List</title>
+    <title>Service List</title>
     <style>
         #header {
             background-color: gray;
@@ -24,7 +24,7 @@
 
 <body>
     <div id="header">
-        <h2>Appointment History List Form</h2>
+        <h2>Service List Form</h2>
     </div>
     {% if messages %}
     {% for message in messages %}
@@ -36,51 +36,35 @@
     <div id="body">
         <h3>Clinic Reservation System</h3>
         <hr>
-        <p>Appointment History List...</p>
+        <p>Service List...</p>
         <table align="center" width="90%" border="1px solid black">
             <tr>
                 <th>
-                    <p>Appointment Id
+                    <p>Service Id
                 </th>
                 <th>
                     <p>Clinic Id
                 </th>
                 <th>
-                    <p>Service Id
+                    <p>Name
                 </th>
                 <th>
-                    <p>User Name
-                </th>
-                <th>
-                    <p>Date
-                </th>
-                <th>
-                    <p>Time
-                </th>
-                <th>
-                    <p>Status
+                    <p>Price
                 </th>
             </tr>
-            {% for appointment in appointmentList %}
+            {% for service in serviceList %}
             <tr align="center">
-                <td>{{ appointment.AppointmentId }}</td>
                 <td>
-                    <p>{{ appointment.ClinicId }}</p>
+                    <p>{{ service.ServiceId }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.ServiceId }}</p>
+                    <p>{{ service.ClinicId }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.UserName }}</p>
+                    <p>{{ service.Name }}</p>
                 </td>
                 <td>
-                    <p>{{ appointment.Date }}</p>
-                </td>
-                <td>
-                    <p>{{ appointment.Time }}</p>
-                </td>
-                <td>
-                    <p>{{ appointment.Status }}</p>
+                    <p>{{ service.Price }}</p>
                 </td>
             </tr>
             {% endfor %}

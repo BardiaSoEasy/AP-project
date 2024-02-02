@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Create Service</title>
     <style>
         #header {
             background-color: gray;
@@ -24,7 +24,7 @@
 
 <body>
     <div id="header">
-        <h2>Login Form</h2>
+        <h2>Create Service Form</h2>
     </div>
     {% if messages %}
     {% for message in messages %}
@@ -37,14 +37,14 @@
         <h3>Clinic Reservation System</h3>
         <hr>
         <form action="" method="post">
-            <p>Select a user for login...</p>
+            <p>Enter service specifications...</p>
             {% csrf_token %}
             {{ form.as_p }}
             <br>
             <input type="submit" value="Submit">
         </form>
         <br>
-        <button onclick="document.location='/'">Back</button>
+        <button onclick="history.back();">Back</button>
     </div>
     <div id="footer">
         <p>Sharif University Of Technology</p>

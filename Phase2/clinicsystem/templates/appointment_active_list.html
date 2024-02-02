@@ -26,6 +26,13 @@
     <div id="header">
         <h2>Appointment Active List Form</h2>
     </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
     <div id="body">
         <h3>Clinic Reservation System</h3>
         <hr>
@@ -56,7 +63,7 @@
             </tr>
             {% for appointment in appointmentList %}
             <tr align="center">
-                <td><a href="#">{{ appointment.AppointmentId }}</a></td>
+                <td><a href="/clinicsystem/appointment/{{ appointment.AppointmentId }}/">{{ appointment.AppointmentId }}</a></td>
                 <td>
                     <p>{{ appointment.ClinicId }}</p>
                 </td>

@@ -26,6 +26,13 @@
     <div id="header">
         <h2>Welcome Form</h2>
     </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
     <div id="body">
         <h3>Welcom to Clinic Reservation System</h3>
         <hr>
