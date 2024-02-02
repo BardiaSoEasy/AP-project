@@ -43,6 +43,7 @@ class Appointment(models.Model):
     Status = models.CharField(max_length=10, choices=[('Booked','Booked'), ('Cancelled','Cancelled'), ('Paid','Paid')], default='Booked')
 
     def __str__(self):
+        # return f"{self.AppointmentId}"
         return f"{self.ClinicId} / {self.ServiceId} / { self.UserName}"
     
 class Notification(models.Model):
