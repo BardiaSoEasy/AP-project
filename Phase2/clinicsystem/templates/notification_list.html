@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notification List</title>
+    <style>
+        #header {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #body {
+            background-color: #cccccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Notification List Form</h2>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div id="body">
+        <h3>Clinic Reservation System</h3>
+        <hr>
+        <p>Notification List...</p>
+        <table align="center" width="90%" border="1px solid black">
+            <tr>
+                <th>
+                    <p>Notification Id
+                </th>
+                <th>
+                    <p>User Name
+                </th>
+                <th>
+                    <p>Date/Time
+                </th>
+                <th>
+                    <p>Message
+                </th>
+            </tr>
+            {% for notification in notificationList %}
+            <tr align="center">
+                <td>
+                    <p>{{ notification.NotificationId }}</p>
+                </td>
+                <td>
+                    <p>{{ notification.UserName }}</p>
+                </td>
+                <td>
+                    <p>{{ notification.DateTime }}</p>
+                </td>
+                <td>
+                    <p>{{ notification.Message }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button onclick="history.back();">Back</button>
+    </div>
+    <div id="footer">
+        <p>Sharif University Of Technology</p>
+    </div>
+</body>
+
+</html>

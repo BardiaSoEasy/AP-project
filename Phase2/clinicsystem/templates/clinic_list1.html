@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Clinic List</title>
+    <style>
+        #header {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #body {
+            background-color: #cccccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Clinic List Form</h2>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div id="body">
+        <h3>Clinic Reservation System</h3>
+        <hr>
+        <p>Clinic List...</p>
+        <table align="center" width="90%" border="1px solid black">
+            <tr>
+                <th>
+                    <p>Clinic Id
+                </th>
+                <th>
+                    <p>Name
+                </th>
+                <th>
+                    <p>Address
+                </th>
+                <th>
+                    <p>Contact
+                </th>
+                <th>
+                    <p>Availability
+                </th>
+            </tr>
+            {% for clinic in clinicList %}
+            <tr align="center">
+                <td>
+                    <p>{{ clinic.ClinicId }}</p>
+                </td>
+                <td>
+                    <p>{{ clinic.Name }}</p>
+                </td>
+                <td>
+                    <p>{{ clinic.Address }}</p>
+                </td>
+                <td>
+                    <p>{{ clinic.Contact }}</p>
+                </td>
+                <td>
+                    <p>{{ clinic.Availability }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button onclick="history.back();">Back</button>
+    </div>
+    <div id="footer">
+        <p>Sharif University Of Technology</p>
+    </div>
+</body>
+
+</html>

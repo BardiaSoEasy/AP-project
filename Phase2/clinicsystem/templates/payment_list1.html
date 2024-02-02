@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Payment List</title>
+    <style>
+        #header {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #body {
+            background-color: #cccccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Payment List Form</h2>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div id="body">
+        <h3>Clinic Reservation System</h3>
+        <hr>
+        <p>Payment List...</p>
+        <table align="center" width="90%" border="1px solid black">
+            <tr>
+                <th>
+                    <p>Payment Id
+                </th>
+                <th>
+                    <p>Appointment Id
+                </th>
+                <th>
+                    <p>Date/Time
+                </th>
+                <th>
+                    <p>Amount
+                </th>
+            </tr>
+            {% for payment in paymentList %}
+            <tr align="center">
+                <td>
+                    <p>{{ payment.PaymentId }}</p>
+                </td>
+                <td>
+                    <p>{{ payment.AppointmentId }}</p>
+                </td>
+                <td>
+                    <p>{{ payment.DateTime }}</p>
+                </td>
+                <td>
+                    <p>{{ payment.Amount }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button onclick="history.back();">Back</button>
+    </div>
+    <div id="footer">
+        <p>Sharif University Of Technology</p>
+    </div>
+</body>
+
+</html>

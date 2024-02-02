@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Service List</title>
+    <style>
+        #header {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #body {
+            background-color: #cccccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Service List Form</h2>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div id="body">
+        <h3>Clinic Reservation System</h3>
+        <hr>
+        <p>Service List...</p>
+        <table align="center" width="90%" border="1px solid black">
+            <tr>
+                <th>
+                    <p>Service Id
+                </th>
+                <th>
+                    <p>Clinic Id
+                </th>
+                <th>
+                    <p>Name
+                </th>
+                <th>
+                    <p>Price
+                </th>
+            </tr>
+            {% for service in serviceList %}
+            <tr align="center">
+                <td>
+                    <p>{{ service.ServiceId }}</p>
+                </td>
+                <td>
+                    <p>{{ service.ClinicId }}</p>
+                </td>
+                <td>
+                    <p>{{ service.Name }}</p>
+                </td>
+                <td>
+                    <p>{{ service.Price }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button onclick="history.back();">Back</button>
+    </div>
+    <div id="footer">
+        <p>Sharif University Of Technology</p>
+    </div>
+</body>
+
+</html>

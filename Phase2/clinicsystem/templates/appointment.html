@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Appointment</title>
+    <style>
+        #header {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        #footer {
+            background-color: grey;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #body {
+            background-color: #cccccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Appointment Form</h2>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" style="background-color: red; color: white;">
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div id="body">
+        <h3>Clinic Reservation System</h3>
+        <hr>
+        <form action="" method="post">
+            <p>Appointment...</p>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button onclick="document.location='/clinicsystem/appointment/{{ appointmentId }}/'">Update</button>
+            <button onclick="document.location='/clinicsystem/appointment/{{ appointmentId }}/cancel/'">Cancel</button>
+        </form>
+        <button onclick="history.back();">Back</button>
+        <br>
+    </div>
+    <div id="footer">
+        <p>Sharif University Of Technology</p>
+    </div>
+</body>
+
+</html>
